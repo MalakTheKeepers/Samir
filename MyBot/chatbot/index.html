@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samir - Smart Environmental Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            transition: left 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            left: 0;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            transition: left 0.3s ease;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            color: white;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="300" fill="url(%23a)"/><circle cx="800" cy="800" r="400" fill="url(%23a)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #f0f0f0, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-card i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .project-features li {
+            padding: 0.5rem 0;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-features li i {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            width: 16px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .social-login {
+            margin: 1.5rem 0;
+        }
+
+        .social-login p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .social-login p::before,
+        .social-login p::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: #e1e5e9;
+        }
+
+        .social-login p::before {
+            left: 0;
+        }
+
+        .social-login p::after {
+            right: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .social-btn:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .social-btn.facebook {
+            color: #1877f2;
+        }
+
+        .social-btn.google {
+            color: #db4437;
+        }
+
+        .form-toggle {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .form-toggle a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .form-toggle a:hover {
+            text-decoration: underline;
+        }
+
+        /* User Menu */
+        .user-menu {
+            position: relative;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            min-width: 200px;
+            display: none;
+        }
+
+        .dropdown.active {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown a:hover {
+            background: #f8f9fa;
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1500;
+            padding: 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav-links a {
+            display: block;
+            padding: 1rem;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            background: #f8f9fa;
+        }
+
+        .mobile-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #666;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+                line-height: 1.1;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .hero-card {
+                padding: 1.5rem;
+            }
+
+            .hero-card i {
+                font-size: 3rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+            }
+
+            .project-features {
+                margin-bottom: 1.5rem;
+            }
+
+            .social-buttons {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-content {
+                padding: 1rem;
+            }
+
+            .page-header {
+                padding: 1.5rem;
+            }
+
+            .profile-card {
+                padding: 1.5rem;
+            }
+
+            .profile-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .stat-item {
+                padding: 0.75rem;
+            }
+
+            .stat-number {
+                font-size: 1.2rem;
+            }
+
+            .setting-group {
+                padding: 1rem;
+            }
+
+            .setting-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .setting-item > div:first-child {
+                width: 100%;
+            }
+
+            .toggle {
+                align-self: flex-end;
+            }
+        }
+
+        /* About Us Section */
+        .about {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .team-logo {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            display: block;
+            border: 4px solid #667eea;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .team-member h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .mission-statement {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .mission-statement h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .mission-statement p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .contact-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .contact-link i {
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ffd700;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #2c3e50;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Interactive Map Section */
+        .map-section {
+            padding: 6rem 0;
+            background: #f8f9fa;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .map-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .map-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .map-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .map-wrapper {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .map-iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .map-feature {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .map-feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .map-feature-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .map-feature h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .map-feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .map-legend {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .map-legend h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .legend-color.red {
+            background: #dc3545;
+        }
+
+        .legend-color.orange {
+            background: #fd7e14;
+        }
+
+        .legend-color.yellow {
+            background: #ffc107;
+        }
+
+        .legend-color.green {
+            background: #28a745;
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            .hero-text p {
+                font-size: 1rem;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            .section-header p {
+                font-size: 1rem;
+            }
+            .project-card h3 {
+                font-size: 1.3rem;
+            }
+            .profile-stats {
+                grid-template-columns: 1fr;
+            }
+            .nav-container {
+                padding: 0 1rem;
+            }
+            .auth-buttons {
+                gap: 0.5rem;
+            }
+            .btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            .modal-content {
+                padding: 1rem;
+            }
+            .confirmation-content {
+                padding: 1.5rem;
+            }
+            .team-logo {
+                width: 180px;
+                height: 180px;
+                margin-bottom: 2rem;
+            }
+            .about-text h2 {
+                font-size: 2rem;
+            }
+            .about-text p {
+                font-size: 1rem;
+                text-align: left;
+            }
+            .team-members {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .mission-statement {
+                padding: 1.5rem;
+            }
+            .team-member-photo {
+                width: 100px;
+                height: 100px;
+            }
+            .contact-header h2 {
+                font-size: 2rem;
+            }
+            .contact-header p {
+                font-size: 1rem;
+            }
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .contact-card {
+                padding: 1.5rem;
+            }
+            .contact-form {
+                padding: 1.5rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .map-header h2 {
+                font-size: 2rem;
+            }
+            .map-header p {
+                font-size: 1rem;
+            }
+            .map-wrapper {
+                padding: 1rem;
+            }
+            .map-iframe {
+                height: 300px;
+            }
+            .map-features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .map-feature {
+                padding: 1.5rem;
+            }
+            .legend-items {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Profile and Settings Pages */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+            background: #f8f9fa;
+        }
+        .page.active {
+            display: block;
+        }
+        .page-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .page-header {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .page-header p {
+            color: #666;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+        .back-btn:hover {
+            color: #5a6fd8;
+        }
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+        .profile-info {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .profile-info h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .profile-info p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .form-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .form-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-row.single {
+            grid-template-columns: 1fr;
+        }
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .setting-group {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .setting-group h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+        .setting-label {
+            color: #333;
+            font-weight: 500;
+        }
+        .setting-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+        .toggle {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: #ccc;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .toggle.active {
+            background: #667eea;
+        }
+        .toggle::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        .toggle.active::after {
+            transform: translateX(26px);
+        }
+        .confirmation-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .confirmation-modal.active {
+            display: flex;
+        }
+        .confirmation-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: modalSlideIn 0.3s ease;
+        }
+        .confirmation-icon {
+            font-size: 3rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        .confirmation-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .confirmation-content p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .form-actions {
+                flex-direction: column;
+            }
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-recycle"></i> Samir
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#map">Map</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="document.querySelector('.dropdown').classList.toggle('active')">
+                        U
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" id="profileLink">Profile</a> 
+                        <a href="#" id="settingsLink">Settings</a>
+                        <a href="#" class="logout-btn">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileNav()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <a href="#" class="logo">Samir</a>
+            <button class="mobile-close" onclick="toggleMobileNav()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#home" onclick="showHome()">Home</a></li>
+            <li><a href="#projects" onclick="showHome()">Projects</a></li>
+            <li><a href="#map" onclick="showHome()">Map</a></li>
+            <li><a href="#about" onclick="showHome()">About</a></li>
+            <li><a href="#contact" onclick="showHome()">Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="#" class="btn btn-primary" onclick="showPage('profilePage'); toggleMobileNav()">
+                <i class="fas fa-user"></i> Profile
+            </a>
+            <a href="#" class="btn btn-outline" onclick="showPage('settingsPage'); toggleMobileNav()">
+                <i class="fas fa-cog"></i> Settings
+            </a>
+            <a href="#" class="btn btn-outline">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </div>
+    
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>Smarter Solutions for a Greener Tomorrow.</h1>
+                    <p>Harnessing AI to optimize resource management and drive sustainable environmental change in your city.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-bolt"></i> Get Started
+                        </a>
+                        <a href="#projects" class="btn btn-outline">
+                            <i class="fas fa-search"></i> Discover Projects
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual fade-in" data-delay="200">
+                    <div class="hero-card">
+                        <i class="fas fa-leaf"></i>
+                        <h3>A Data-Driven Approach</h3>
+                        <p>Leveraging real-time insights for maximum ecological impact and efficiency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects" id="projects">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Our Impactful Projects</h2>
+                    <p>Samir is currently piloting three key initiatives designed to reduce waste, conserve water, and monitor pollution.</p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card fade-in" data-delay="100">
+                        <i class="fas fa-trash-restore-alt project-icon"></i>
+                        <h3>AI-Optimized Recycling</h3>
+                        <p>Using vision models to increase sorting accuracy and efficiency in waste management centers.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check-circle"></i> 99% Sorting Accuracy</li>
+                            <li><i class="fas fa-check-circle"></i> Real-time System Analytics</li>
+                            <li><i class="fas fa-check-circle"></i> Reduce Landfill Volume</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                    <div class="project-card fade-in" data-delay="200">
+                        <i class="fas fa-tint project-icon"></i>
+                        <h3>Smart Water Conservation</h3>
+                        <p>Predicting leaks and optimizing public water distribution using machine learning algorithms.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check-circle"></i> Leak Prediction Alerts</li>
+                            <li><i class="fas fa-check-circle"></i> 30% Water Savings Target</li>
+                            <li><i class="fas fa-check-circle"></i> Dynamic Flow Control</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                    <div class="project-card fade-in" data-delay="300">
+                        <i class="fas fa-smog project-icon"></i>
+                        <h3>Air Quality Mapping</h3>
+                        <p>Deploying low-cost sensors to generate hyper-local air quality maps for urban planning.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check-circle"></i> Hyper-local PM2.5 Data</li>
+                            <li><i class="fas fa-check-circle"></i> Real-time Pollution Alerts</li>
+                            <li><i class="fas fa-check-circle"></i> Integration with City API</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section" id="map">
+            <div class="container">
+                <div class="map-header fade-in">
+                    <h2>Live Environmental Data Map</h2>
+                    <p>Explore real-time air quality, recycling collection status, and water usage across the city.</p>
+                </div>
+                <div class="map-wrapper fade-in" data-delay="100">
+                    <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.2272827725835!2d-122.41941568468162!3d37.77492977975924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085806c9e0d164d%3A0x808801d017b3c20c!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1678873534571!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="map-legend fade-in" data-delay="200">
+                    <h3>Map Legend - Air Quality Index</h3>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <span class="legend-color green"></span>
+                            <span>0-50 (Good)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color yellow"></span>
+                            <span>51-100 (Moderate)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color orange"></span>
+                            <span>101-150 (Unhealthy)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color red"></span>
+                            <span>151+ (Very Unhealthy)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="team-logo fade-in">
+                        <img src="https://via.placeholder.com/250x250.png?text=Samir+Logo" alt="Samir Team Logo" class="logo-image">
+                    </div>
+                    <div class="about-text fade-in" data-delay="100">
+                        <h2>Who We Are</h2>
+                        <p>Samir is a collective of environmental scientists, data engineers, and urban planners dedicated to building the sustainable cities of the future. We believe that technology, specifically AI and machine learning, is the most powerful tool we have to address the climate crisis at a local level.</p>
+                        <p>Our work is driven by a commitment to transparency, community involvement, and impactful, measurable results. We partner with city governments and local communities to ensure our solutions are practical and scalable.</p>
+                    </div>
+                    
+                    <div class="mission-statement fade-in" data-delay="200">
+                        <h3>Our Mission Statement</h3>
+                        <p>"To provide smart, accessible, and scalable environmental solutions that empower communities and preserve the planet for future generations."</p>
+                    </div>
+
+                    <div class="team-members">
+                        <div class="team-member fade-in" data-delay="300">
+                            <img src="https://via.placeholder.com/120x120.png?text=A" alt="Team Member A" class="team-member-photo">
+                            <h4>Dr. Anya Sharma</h4>
+                            <p>Lead Data Scientist</p>
+                        </div>
+                        <div class="team-member fade-in" data-delay="400">
+                            <img src="https://via.placeholder.com/120x120.png?text=B" alt="Team Member B" class="team-member-photo">
+                            <h4>Ben Carter</h4>
+                            <p>Urban Planning Expert</p>
+                        </div>
+                        <div class="team-member fade-in" data-delay="500">
+                            <img src="https://via.placeholder.com/120x120.png?text=C" alt="Team Member C" class="team-member-photo">
+                            <h4>Chloe Li</h4>
+                            <p>Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-header fade-in">
+                        <h2>Get In Touch</h2>
+                        <p>Have a question about our technology, a partnership proposal, or want to report an environmental issue? We're here to help.</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-card fade-in" data-delay="100">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <h3>Email Us</h3>
+                            <p>Send us your general inquiries.</p>
+                            <a href="mailto:info@samir.com" class="contact-link">
+                                <i class="fas fa-paper-plane"></i> info@samir.com
+                            </a>
+                        </div>
+                        <div class="contact-card fade-in" data-delay="200">
+                            <i class="fas fa-phone-alt contact-icon"></i>
+                            <h3>Call Support</h3>
+                            <p>Reach out for urgent technical support.</p>
+                            <a href="tel:+15551234567" class="contact-link">
+                                <i class="fas fa-phone"></i> +1 (555) 123-4567
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-form fade-in" data-delay="300">
+                        <h3>Send Us a Message</h3>
+                        <form action="#" method="POST">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" placeholder="Your detailed message..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-arrow-right"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="page" id="profilePage">
+        <div class="page-content">
+            <a href="#" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <div class="page-header">
+                <h1>User Profile</h1>
+                <p>View your environmental impact stats and membership details.</p>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-avatar">U</div>
+                <div class="profile-info">
+                    <h2>User Name</h2>
+                    <p>Member Status: <span style="color:#667eea; font-weight: 600;">Active Contributor</span></p>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="pointsEarned">0</span>
+                        <span class="stat-label">Points Earned</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="quizzesCompleted">0</span>
+                        <span class="stat-label">Quizzes Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="daysActiveDisplay">1</span>
+                        <span class="stat-label">Days Active</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="memberSinceDisplay">2023</span>
+                        <span class="stat-label">Member Since (Year)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="settingsPage">
+        <div class="page-content">
+            <a href="#" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <div class="page-header">
+                <h1>Settings</h1>
+                <p>Manage your account preferences and notification settings.</p>
+            </div>
+
+            <div class="settings-grid">
+                <div class="setting-group">
+                    <h4>Account</h4>
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Change Password</div>
+                            <div class="setting-description">Update your security credentials.</div>
+                        </div>
+                        <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem;">Change</a>
+                    </div>
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Delete Account</div>
+                            <div class="setting-description">Permanently remove your profile and data.</div>
+                        </div>
+                        <a href="#" class="btn btn-secondary" style="background-color: #dc3545; padding: 0.5rem 1rem;">Delete</a>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h4>Notifications</h4>
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Email Alerts</div>
+                            <div class="setting-description">Receive weekly environmental summary reports.</div>
+                        </div>
+                        <div class="toggle active"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Project Updates</div>
+                            <div class="setting-description">Get notified on milestones for active projects.</div>
+                        </div>
+                        <div class="toggle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="contact">
+        <div class="container">
+            </div>
+    </footer>
+
+
+    <script>
+        // --- NAVIGATION HOOK (Fixes opening on first click) ---
+
+        /**
+         * Hides main sections (Hero/Projects), shows a target page, and scrolls to top.
+         * This prevents the page from showing the main content briefly before scrolling.
+         * @param {string} pageId The ID of the page section to show (e.g., 'profilePage').
+         */
+        function showPage(pageId) {
+            // Hide Hero and Projects before activating the new page (Hook 1)
+            document.querySelector('.hero').style.display = 'none';
+            document.querySelector('.projects').style.display = 'none';
+            
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show the target page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                
+                // Scroll into view (Hook 1)
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        /**
+         * Reverts the view back to the main Home page.
+         */
+        function showHome() {
+            // Show main content
+            document.querySelector('.hero').style.display = 'flex'; // Restore default display
+            document.querySelector('.projects').style.display = 'block'; // Restore default display
+
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Scroll back to the top of the home page (Hero section)
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+
+        // --- LOCAL STORAGE AND STATS HOOK ---
+        
+        /**
+         * Initializes user stats and session tracking in localStorage.
+         * Initializes samir_stats and ensures stats are coerced to numbers (Hook 4 & Stats Coercion).
+         * Tracks first login date (Hook 2 & 3).
+         */
+        function initUserSession() {
+            const now = new Date();
+            let stats = JSON.parse(localStorage.getItem('samir_stats'));
+            let firstLoginDate = localStorage.getItem('samir_firstLoginDate');
+
+            // Initialize first login date (inclusive logic)
+            if (!firstLoginDate) {
+                firstLoginDate = now.toISOString().split('T')[0]; // YYYY-MM-DD
+                localStorage.setItem('samir_firstLoginDate', firstLoginDate);
+            }
+
+            // Initialize or validate stats structure
+            if (!stats) {
+                stats = {
+                    points: 0,
+                    quizzes: 0,
+                };
+            } else {
+                // Stats numbers are coerced to numbers to avoid string issues (Hook: Stats Coercion)
+                stats.points = Number(stats.points) || 0;
+                stats.quizzes = Number(stats.quizzes) || 0;
+            }
+
+            localStorage.setItem('samir_stats', JSON.stringify(stats));
+            return { firstLoginDate, stats };
+        }
+
+        // Run initialization immediately
+        const { firstLoginDate } = initUserSession();
+
+        /**
+         * Calculates Days Active/Member Since and updates the profile page DOM.
+         */
+        function updateProfileStats() {
+            // Re-fetch stats to ensure they are the latest
+            const stats = JSON.parse(localStorage.getItem('samir_stats'));
+            
+            const today = new Date();
+            const firstLogin = new Date(firstLoginDate);
+            
+            // Calculate Days Active (Hook: Days Active)
+            // Days Active now calculates from your first login date (inclusive), so a second day shows as 2.
+            const oneDay = 1000 * 60 * 60 * 24;
+            // Math.floor difference in milliseconds / oneDay, then add 1 for inclusive count
+            const diffTime = today.getTime() - firstLogin.getTime();
+            const daysActive = Math.floor(diffTime / oneDay) + 1;
+
+            // Member Since (Hook: Member Since)
+            const memberSinceYear = firstLogin.getFullYear();
+
+            // Update DOM elements with calculated and stored stats
+            document.getElementById('daysActiveDisplay').textContent = daysActive;
+            document.getElementById('memberSinceDisplay').textContent = memberSinceYear;
+            document.getElementById('pointsEarned').textContent = stats.points;
+            document.getElementById('quizzesCompleted').textContent = stats.quizzes;
+        }
+
+        // Attach event listeners after DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize and update stats immediately on load
+            updateProfileStats();
+
+            // Attach navigation handlers to the dropdown links
+            const profileLink = document.getElementById('profileLink');
+            const settingsLink = document.getElementById('settingsLink');
+
+            if (profileLink) {
+                profileLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showPage('profilePage');
+                    // Hide dropdown after click
+                    document.querySelector('.dropdown').classList.remove('active');
+                });
+            }
+
+            if (settingsLink) {
+                settingsLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showPage('settingsPage');
+                    // Hide dropdown after click
+                    document.querySelector('.dropdown').classList.remove('active');
+                });
+            }
+
+            // Attach handler to the back button
+            document.querySelectorAll('.back-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showHome();
+                });
+            });
+
+            // Toggle functionality for settings page toggles
+            document.querySelectorAll('.toggle').forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    toggle.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+    <script>
+        // Basic scripts already in the file (mobile nav, etc.)
+        function toggleMobileNav() {
+            document.getElementById('mobileNav').classList.toggle('active');
+        }
+        
+        // Hide/Show dropdown for user menu
+        document.querySelector('.user-avatar').addEventListener('click', function() {
+            document.querySelector('.dropdown').classList.toggle('active');
+        });
+
+        // Close dropdown if user clicks outside
+        document.addEventListener('click', function(e) {
+            const userMenu = document.querySelector('.user-menu');
+            if (userMenu && !userMenu.contains(e.target)) {
+                document.querySelector('.dropdown').classList.remove('active');
+            }
+        });
+
+        // Touch gestures for mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            if (!touchStartX || !touchStartY) return;
+
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+
+            // Swipe left to close mobile nav
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                if (diffX > 0 && document.getElementById('mobileNav').classList.contains('active')) {
+                    toggleMobileNav();
+                }
+            }
+
+            touchStartX = 0;
+            touchStartY = 0;
+        });
+
+        // Add CSS for notification animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

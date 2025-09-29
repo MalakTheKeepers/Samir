@@ -1,0 +1,156 @@
+{
+  "texts": [
+    {
+      "id": "intro",
+      "title": "Welcome to the Chatbot",
+      "content": "Hello! I'm a simple chatbot that can help you with texts and quizzes. I can answer questions about various topics and generate quizzes for you to practice.",
+      "keywords": ["welcome", "hello", "help", "introduction"]
+    },
+    {
+      "id": "math_basics",
+      "title": "Basic Mathematics",
+      "content": "Mathematics is the study of numbers, shapes, and patterns. Basic math includes addition, subtraction, multiplication, and division. These operations form the foundation for more advanced mathematical concepts.",
+      "keywords": ["math", "mathematics", "numbers", "addition", "subtraction", "multiplication", "division"]
+    },
+    {
+      "id": "science_intro",
+      "title": "Introduction to Science",
+      "content": "Science is a systematic way of understanding the natural world through observation and experimentation. It includes fields like physics, chemistry, biology, and earth sciences.",
+      "keywords": ["science", "physics", "chemistry", "biology", "experiment", "observation"]
+    },
+    {
+      "id": "history_world",
+      "title": "World History",
+      "content": "World history covers the development of human civilization from ancient times to the present. Key periods include ancient civilizations, medieval times, the Renaissance, and modern history.",
+      "keywords": ["history", "civilization", "ancient", "medieval", "renaissance", "world"]
+    },
+    {
+      "id": "alex_climate_ar",
+      "title": "الإسكندرية بين التغيرات المناخية وحلول الاستدامة: مشروع سمير نموذجًا",
+      "content": "تواجه الإسكندرية تحديات بيئية بسبب ارتفاع مستوى سطح البحر والتغيرات المناخية، مما يهدد مواقع أثرية وثقافية مثل قلعة قايتباي ومقابر الشاطبي والأنفوشي. يفاقم التلوث البلاستيكي الوضع عبر الميكروبلاستيك وتأثيراته البيئية والصحية. يقدم مشروع سمير حلولًا عملية: خريطة تفاعلية للمناطق المعرضة للفيضانات، مساعد ذكي للتوعية ونصائح الاستدامة، وآلية نقاط لتحفيز إعادة التدوير عبر QR وربطها بشركات معتمدة. يهدف المشروع لتعزيز الوعي، إشراك المجتمع والقطاع الخاص، ودعم السياحة البيئية وحماية التراث، مع قابلية التوسع لمدن ساحلية أخرى.",
+      "keywords": ["الإسكندرية", "اسكندرية", "تغيرات مناخية", "الاستدامة", "البلاستيك", "الميكروبلاستيك", "قلعة قايتباي", "مشروع سمير", "إعادة التدوير", "فيضانات", "خريطة تفاعلية"]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "math_quiz_1",
+      "title": "Basic Math Quiz",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is 5 + 3?",
+          "options": ["6", "7", "8", "9"],
+          "correct": 2,
+          "explanation": "5 + 3 = 8"
+        },
+        {
+          "id": 2,
+          "question": "What is 12 - 4?",
+          "options": ["6", "7", "8", "9"],
+          "correct": 2,
+          "explanation": "12 - 4 = 8"
+        },
+        {
+          "id": 3,
+          "question": "What is 3 × 4?",
+          "options": ["10", "11", "12", "13"],
+          "correct": 2,
+          "explanation": "3 × 4 = 12"
+        }
+      ]
+    },
+    {
+      "id": "science_quiz_1",
+      "title": "Science Basics Quiz",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the chemical symbol for water?",
+          "options": ["H2O", "CO2", "NaCl", "O2"],
+          "correct": 0,
+          "explanation": "Water is H2O - two hydrogen atoms and one oxygen atom"
+        },
+        {
+          "id": 2,
+          "question": "What planet is closest to the Sun?",
+          "options": ["Venus", "Earth", "Mercury", "Mars"],
+          "correct": 2,
+          "explanation": "Mercury is the closest planet to the Sun"
+        },
+        {
+          "id": 3,
+          "question": "What gas do plants produce during photosynthesis?",
+          "options": ["Carbon Dioxide", "Oxygen", "Nitrogen", "Hydrogen"],
+          "correct": 1,
+          "explanation": "Plants produce oxygen during photosynthesis"
+        }
+      ]
+    },
+    {
+      "id": "alex_quiz_ar",
+      "title": "اختبار: الإسكندرية والمناخ والاستدامة",
+      "questions": [
+        {
+          "id": 1,
+          "question": "ما الخطر المناخي الأبرز الذي يهدد الإسكندرية؟",
+          "options": ["الزلازل", "ارتفاع مستوى سطح البحر", "العواصف الرملية", "الجفاف فقط"],
+          "correct": 1,
+          "explanation": "تشير الدراسات إلى أن ارتفاع مستوى سطح البحر قد يؤدي لفقدان أجزاء من المدينة."
+        },
+        {
+          "id": 2,
+          "question": "أي من المعالم التالية ضمن نطاق الخطر؟",
+          "options": ["الأهرامات", "قلعة قايتباي", "سد العالي", "معبد الكرنك"],
+          "correct": 1,
+          "explanation": "قلعة قايتباي معرّضة لفقدان نسبة من مساحتها وفق سيناريوهات مناخية."
+        },
+        {
+          "id": 3,
+          "question": "ما المشكلة الرئيسية للبلاستيك في البيئة البحرية؟",
+          "options": ["يتحلل خلال أيام", "يتحول إلى ميكروبلاستيك يدخل السلسلة الغذائية", "ينظف المياه", "يزيد الأكسجين"],
+          "correct": 1,
+          "explanation": "الميكروبلاستيك يدخل في السلسلة الغذائية ويؤثر على الإنسان."
+        },
+        {
+          "id": 4,
+          "question": "ما إحدى أدوات مشروع سمير؟",
+          "options": ["محطة نووية", "خريطة تفاعلية للمناطق المعرضة للفيضانات", "سحابة ممطرة صناعية", "سفن صيد"],
+          "correct": 1,
+          "explanation": "الخريطة التفاعلية تبرز المناطق الأكثر تعرضًا للمخاطر."
+        },
+        {
+          "id": 5,
+          "question": "ما الفائدة من آلة النقاط وQR؟",
+          "options": ["تزيد النفايات", "تحفّز إعادة التدوير عبر نقاط تُستبدل", "تمنع الأمطار", "لا تأثير"],
+          "correct": 1,
+          "explanation": "تحوّل الزجاجات إلى نقاط تُستبدل وتشجّع إعادة التدوير عبر ربط الشركات المعتمدة."
+        }
+      ]
+    }
+  ],
+  "responses": {
+    "greetings": [
+      "Hello! How can I help you today?",
+      "Hi there! What would you like to know?",
+      "Greetings! I'm here to help with texts and quizzes.",
+      "Hello! Ready to learn something new?",
+      "مرحبًا! كيف يمكنني مساعدتك اليوم؟",
+      "أهلًا بك! ماذا تحب أن تتعلم؟",
+      "تحياتي! أنا هنا للمساعدة في النصوص والاختبارات."
+    ],
+    "help": [
+      "I can help you with texts and quizzes. Try asking about a topic or request a quiz!",
+      "You can ask me about various topics or take a quiz. What interests you?",
+      "I'm here to help! Ask me about any topic or request a quiz to test your knowledge.",
+      "أستطيع مساعدتك في النصوص والاختبارات. اسأل عن موضوع أو اطلب اختبارًا!",
+      "يمكنك قراءة نصوص تعليمية أو خوض اختبار. ما اهتماماتك؟"
+    ],
+    "unknown": [
+      "I'm not sure about that. Can you try asking about a specific topic or request a quiz?",
+      "I don't have information about that. Try asking about math, science, or history!",
+      "That's interesting! I might not have specific information about that topic. What else can I help you with?",
+      "لست متأكدًا من ذلك. جرّب السؤال عن موضوع محدد أو اطلب اختبارًا.",
+      "لا أملك معلومات كافية عن هذا. اسأل عن الرياضيات أو العلوم أو التاريخ!"
+    ]
+  }
+}
