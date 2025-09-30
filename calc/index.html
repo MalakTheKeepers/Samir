@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samir Recycling Points Calculator</title>
+    <style>
+        /* Blue Neon Theme */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #e6f1ff;
+            background: radial-gradient(1200px 800px at 10% 10%, rgba(0, 216, 255, 0.08), transparent 60%),
+                        radial-gradient(1000px 700px at 90% 20%, rgba(0, 120, 255, 0.08), transparent 60%),
+                        linear-gradient(135deg, #050816 0%, #0a1430 55%, #091833 100%);
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(5, 8, 22, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 20px rgba(0, 216, 255, 0.25);
+            border: 1px solid rgba(0, 216, 255, 0.35);
+        }
+        h1 {
+            color: #e6f1ff;
+            text-align: center;
+            background: linear-gradient(135deg, #00d8ff, #0078ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 24px rgba(0, 216, 255, 0.25);
+            border-bottom: 2px solid rgba(0, 216, 255, 0.35);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: rgba(230, 241, 255, 0.85);
+        }
+        input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0, 216, 255, 0.25);
+            border-radius: 8px;
+            box-sizing: border-box;
+            background: rgba(6, 12, 28, 0.6);
+            color: #e6f1ff;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="number"]:focus {
+            border-color: #00d8ff;
+            box-shadow: 0 0 0 3px rgba(0, 216, 255, 0.15);
+        }
+        .points-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: linear-gradient(135deg, #00d8ff, #0078ff);
+            color: #00121f;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 216, 255, 0.35);
+        }
+        .points-box h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .points-box p {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 5px 0 0 0;
+        }
+        .section-header {
+            color: #00d8ff;
+            font-size: 1.3em;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(0, 216, 255, 0.35);
+        }
+        #qrcode {
+            margin-top: 30px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(0, 216, 255, 0.35);
+        }
+        #qrcode canvas {
+            max-width: 100%; /* Ensure QR code scales on smaller screens */
+            height: auto;
+        }
+    </style>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>♻️ Samir Recycling Points Calculator</h1>
+
+    <div class="plastic-section">
+        <h2 class="section-header">Plastic Items</h2>
+        
+        <label for="plasticBags">Number of Plastic Bags (10 = 1 pt):</label>
+        <input type="number" id="plasticBags" min="0" value="0" oninput="calculatePoints()">
+        
+        <label for="waterBottles">Number of Plastic Water Bottles (2 = 1 pt):</label>
+        <input type="number" id="waterBottles" min="0" value="0" oninput="calculatePoints()">
+        
+        <label for="heavyBottles">Number of Heavy Plastic Bottles (e.g., Shampoo) (1 = 1 pt):</label>
+        <input type="number" id="heavyBottles" min="0" value="0" oninput="calculatePoints()">
+
+        <label for="brokenToysGrams">Weight of Broken Plastic Toys (grams) (100g = 3 pts):</label>
+        <input type="number" id="brokenToysGrams" min="0" value="0" oninput="calculatePoints()">
+
+        <label for="wastedPlasticKilos">Weight of General Wasted Plastic (kilograms) (1kg = 2 pts):</label>
+        <input type="number" id="wastedPlasticKilos" min="0" value="0" oninput="calculatePoints()">
+    </div>
+
+    <div class="can-section">
+        <h2 class="section-header">Aluminum/Metal Cans</h2>
+
+        <label for="sodaCans">Number of Soda Cans (1 = 3 pts):</label>
+        <input type="number" id="sodaCans" min="0" value="0" oninput="calculatePoints()">
+        
+        <label for="tunaCans">Number of Tuna Cans (1 = 3 pts):</label>
+        <input type="number" id="tunaCans" min="0" value="0" oninput="calculatePoints()">
+
+        <label for="brokenCansKilos">Weight of Broken Cans (kilograms) (1kg = 5 pts):</label>
+        <input type="number" id="brokenCansKilos" min="0" value="0" oninput="calculatePoints()">
+    </div>
+    
+    <div class="points-box">
+        <h2>TOTAL RECYCLING POINTS</h2>
+        <p id="totalPoints">0</p>
+        <button onclick="saveResults()" style="margin-top: 10px; padding: 8px 16px; background: rgba(0, 216, 255, 0.2); border: 1px solid rgba(0, 216, 255, 0.5); border-radius: 6px; color: #e6f1ff; cursor: pointer; font-size: 0.9em;">Save to Profile</button>
+    </div>
+
+    <div id="qrcode">
+        </div>
+</div>
+
+<script>
+    // Initialize QR Code variable outside the function
+    let qrcode = null;
+
+    // JavaScript for Calculation and QR Code Generation
+    function calculatePoints() {
+        // --- Input Values ---
+        // Plastic
+        const bags = parseFloat(document.getElementById('plasticBags').value) || 0;
+        const waterBottles = parseFloat(document.getElementById('waterBottles').value) || 0;
+        const heavyBottles = parseFloat(document.getElementById('heavyBottles').value) || 0;
+        const brokenToysGrams = parseFloat(document.getElementById('brokenToysGrams').value) || 0;
+        const wastedPlasticKilos = parseFloat(document.getElementById('wastedPlasticKilos').value) || 0;
+        
+        // Cans
+        const sodaCans = parseFloat(document.getElementById('sodaCans').value) || 0;
+        const tunaCans = parseFloat(document.getElementById('tunaCans').value) || 0;
+        const brokenCansKilos = parseFloat(document.getElementById('brokenCansKilos').value) || 0;
+        
+        // --- Point Calculations ---
+        let totalPoints = 0;
+        
+        // 1. 10 plastic bags for one point
+        totalPoints += bags / 10;
+        
+        // 2. 2 plastic water bottles for 1 point
+        totalPoints += waterBottles / 2;
+        
+        // 3. 1 heavy plastic bottle for one point
+        totalPoints += heavyBottles * 1;
+        
+        // 4. 100 gram broken plastic toys for 3 points
+        totalPoints += (brokenToysGrams / 100) * 3;
+        
+        // 5. 1 kilogram of wasted plastic for 2 points
+        totalPoints += wastedPlasticKilos * 2;
+        
+        // 6. 1 soda can for 3 points
+        totalPoints += sodaCans * 3;
+        
+        // 7. 1 tuna can for 3 points
+        totalPoints += tunaCans * 3;
+        
+        // 8. 1 kilo of broken cans of different kinds 5 points
+        totalPoints += brokenCansKilos * 5;
+        
+        // Display the total points, rounded to two decimal places
+        document.getElementById('totalPoints').textContent = totalPoints.toFixed(2);
+
+        // Store current calculation for potential saving
+        window.currentCalculation = {
+            points: totalPoints,
+            items: bags + waterBottles + heavyBottles + Math.ceil(brokenToysGrams/100) + 
+                   Math.ceil(wastedPlasticKilos) + sodaCans + tunaCans + Math.ceil(brokenCansKilos)
+        };
+
+        // --- QR Code Generation ---
+        // Prepare the data string for the QR code
+        const qrData = `Recycling Report:\n` +
+                       `Plastic Bags: ${bags}\n` +
+                       `Water Bottles: ${waterBottles}\n` +
+                       `Heavy Bottles: ${heavyBottles}\n` +
+                       `Broken Toys (g): ${brokenToysGrams}\n` +
+                       `Wasted Plastic (kg): ${wastedPlasticKilos}\n` +
+                       `Soda Cans: ${sodaCans}\n` +
+                       `Tuna Cans: ${tunaCans}\n` +
+                       `Broken Cans (kg): ${brokenCansKilos}\n` +
+                       `Total Points: ${totalPoints.toFixed(2)}`;
+
+        // If a QR code already exists, clear it before generating a new one
+        const qrcodeContainer = document.getElementById("qrcode");
+        qrcodeContainer.innerHTML = ''; // Clear previous QR code
+
+        // Generate the new QR code
+        qrcode = new QRCode(qrcodeContainer, {
+            text: qrData,
+            width: 128,
+            height: 128,
+            colorDark : "#264653", // Dark color for the QR code
+            colorLight : "#ffffff", // Light color for the background
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    }
+
+    // Function to save results to profile
+    function saveResults() {
+        if (window.currentCalculation && window.currentCalculation.points > 0) {
+            const stats = JSON.parse(localStorage.getItem('samir_stats') || '{}');
+            const currentPoints = Number(stats.points) || 0;
+            const currentItems = Number(stats.items) || 0;
+            
+            // Update stats
+            stats.points = currentPoints + window.currentCalculation.points;
+            stats.items = currentItems + window.currentCalculation.items;
+            
+            localStorage.setItem('samir_stats', JSON.stringify(stats));
+            
+            // Show confirmation
+            alert(`✅ Saved to profile!\n+${window.currentCalculation.points.toFixed(2)} points\n+${window.currentCalculation.items} items`);
+            
+            // Reset calculation
+            window.currentCalculation = null;
+            
+            // Clear form
+            document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+            calculatePoints();
+        } else {
+            alert('Please enter some recycling items first!');
+        }
+    }
+
+    // Call calculatePoints once on load to generate an initial QR code (e.g., with 0 points)
+    window.onload = calculatePoints;
+</script>
+
+</body>
+</html>

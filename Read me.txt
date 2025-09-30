@@ -1,0 +1,1 @@
+Please put the folder MyBot in the D drive, and open (D:\MyBot\chatbot\static\index.html)

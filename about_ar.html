@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سمير - من نحن</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            color: #e6f1ff;
+            background: radial-gradient(1200px 800px at 10% 10%, rgba(0, 216, 255, 0.16), transparent 60%),
+                        radial-gradient(1000px 700px at 90% 20%, rgba(0, 120, 255, 0.14), transparent 60%),
+                        linear-gradient(135deg, #050816 0%, #0a1430 55%, #091833 100%);
+            min-height: 100vh;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        .card {
+            background: rgba(5,8,22,0.9);
+            border: 1px solid rgba(0, 216, 255, 0.35);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.45), 0 0 24px rgba(0,216,255,0.35);
+        }
+        h1 { font-size: 2.2rem; margin-bottom: 1rem; }
+        p { line-height: 1.9; margin-bottom: 1rem; color: rgba(230,241,255,0.9); }
+        .back {
+            display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 1rem;
+            color: #00d8ff; text-decoration: none;
+        }
+        .team {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1rem; margin-top: 1.5rem;
+        }
+        .member {
+            background: rgba(8,12,28,0.85); border-radius: 12px; padding: 1rem; text-align: center;
+            border: 1px solid rgba(0,216,255,0.25);
+        }
+        .member img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin-bottom: .5rem; border: 3px solid #00d8ff; }
+    </style>
+    <script>
+        function goHome(){ window.location.href = 'index.html'; }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <a href="#" class="back" onclick="goHome()"><i class="fas fa-arrow-left"></i> العودة إلى الرئيسية</a>
+        <div class="card">
+            <h1><i class="fas fa-recycle"></i> سمير – من نحن</h1>
+            <p>نحن "الحراس"، فريق من طلاب الصف السادس المشاركين بفخر في مسابقة ديجيتوبيا. يجمعنا هدف واحد: حماية البيئة والتراث والمستقبل.</p>
+            <p>نعيش في جمهورية مصر العربية ونستلهم من تاريخها العريق، وندرك في الوقت نفسه التحديات التي تواجهها مدينتنا مثل تغيّر المناخ والفيضانات والتلوث البلاستيكي.</p>
+            <p>من خلال مشروع "سمير"، نثبت أن الصغار قادرون على صنع حلول حقيقية باستخدام التكنولوجيا لمساعدة الأسر والمدارس والمجتمع على اتخاذ خطوات عملية نحو مستقبل مستدام.</p>
+
+            <div class="team">
+                <div class="member">
+                    <img src="images/Malak.png" alt="ملك" />
+                    <div>ملك</div>
+                </div>
+                <div class="member">
+                    <img src="images/Ziad (1).png" alt="زياد" />
+                    <div>زياد</div>
+                </div>
+                <div class="member">
+                    <img src="images/Anas.png" alt="أنس" />
+                    <div>أنس</div>
+                </div>
+                <div class="member">
+                    <img src="images/Hana.png" alt="هنا" />
+                    <div>هنا</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
